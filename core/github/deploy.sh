@@ -31,7 +31,8 @@ git clean -f
 git pull
 git checkout $BRANCH
 
-forever restart index.js
+forever stop index.js
+NODE_ENV=production forever start index.js
 echo "#-----------------------------------------------#"
 echo "#              Execution Completed              #"
 echo "#-----------------------------------------------#"
