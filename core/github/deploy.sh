@@ -30,6 +30,8 @@ git reset --hard origin/$BRANCH
 git clean -f
 git pull
 git checkout $BRANCH
+
+forever restart index.js
 echo "#-----------------------------------------------#"
 echo "#              Execution Completed              #"
 echo "#-----------------------------------------------#"
