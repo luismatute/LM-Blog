@@ -356,6 +356,14 @@ frontendControllers = {
                 });
             });
         }).otherwise(handleError(next));
+    },
+    'github': function (req, res, next) {
+        var spawn = require('child_process').spawn,
+            deploy = spawn('sh', [ config().paths.corePath+'/github/deploy.sh' ]);
+
+        deploy.on('close', function (code) {
+            console.log('child process exited with code ' + code);
+        });
     }
 };
 
