@@ -16,8 +16,10 @@ module.exports = function (server) {
         res.redirect(301, subdir + '/rss/');
     });
 
+    // Custom Routes
     server.post('/github/', frontend.github);
-    server.get('/about/', frontend.about)
+    server.get('/about/', frontend.about);
+    server.post('/about/contact/', frontend.doContact);
 
     server.get('/tag/:slug/rss/', frontend.rss);
     server.get('/tag/:slug/rss/:page/', frontend.rss);

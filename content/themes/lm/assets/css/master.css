@@ -827,7 +827,7 @@ dd.readMore a:hover,
 .sandals,
 .catch {
   display: block;
-  background: url(assets/img/projects.jpg) no-repeat;
+  background: url(/assets/img/projects.jpg) no-repeat;
 }
 .beaches {
   background-position: 0px 0px;

@@ -23,7 +23,7 @@ function tabs() {
 
 // Generic Form Validation
 	function formValidator() {
-		$('form').find('button').on('click', function () {
+		$('form#contact-form').find('button').on('click', function () {
 			var $this 		= $(this),
 				$form 		= $this.closest('form'),
 				error 		= 0,
@@ -44,10 +44,24 @@ function tabs() {
 				error = 1;
 				$form.find('input[type="email"]').addClass('error');
 			}
-			if( error === 1 ) {
-				// There is an error
-				return false;
+			if( error === 0 ) {
+				$.ajax({
+					url: '/about/contact/',
+					type: 'post',
+					data: $('#contact-form').serialize(),
+					dataType: 'json',
+					success: function (response) {
+					        console.log(response);
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus);
+						console.log(errorThrown);
+					}
+				});
 			}
+
+			return false;
 		});
 	}
 

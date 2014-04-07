@@ -10,13 +10,13 @@ config = {
     development: {
         // The url to use when providing links to the site, E.g. in RSS and email.
         url: 'http://ghost.luismatute.me/',
-
+        adminEmail: 'luis.matute@me.com',
         mail: {
             transport: 'SMTP',
             options: {
                 service: 'Gmail',
                 auth: {
-                    user: 'luismatute-ghost@gmail.com',
+                    user: 'luismatute.ghost@gmail.com',
                     pass: 'luismatute'
                 }
             }
@@ -45,12 +45,13 @@ config = {
     // Configure your URL and mail settings here
     production: {
         url: 'http://ghost.luismatute.me/',
+        adminEmail: 'luis.matute@me.com',
         mail: {
             transport: 'SMTP',
             options: {
                 service: 'Gmail',
                 auth: {
-                    user: 'luismatute-ghost@gmail.com',
+                    user: 'luismatute.ghost@gmail.com',
                     pass: 'luismatute'
                 }
             }
@@ -77,6 +78,7 @@ config = {
     // Uses a different port number
     testing: {
         url: 'http://127.0.0.1:2369',
+        adminEmail: 'luis.matute@me.com',
         database: {
             client: 'sqlite3',
             connection: {
@@ -94,6 +96,7 @@ config = {
     // Automated testing run through GitHub
     'travis-sqlite3': {
         url: 'http://127.0.0.1:2369',
+        adminEmail: 'luis.matute@me.com',
         database: {
             client: 'sqlite3',
             connection: {
@@ -111,6 +114,7 @@ config = {
     // Automated testing run through GitHub
     'travis-mysql': {
         url: 'http://127.0.0.1:2369',
+        adminEmail: 'luis.matute@me.com',
         database: {
             client: 'mysql',
             connection: {
@@ -132,6 +136,7 @@ config = {
     // Automated testing run through GitHub
     'travis-pg': {
         url: 'http://127.0.0.1:2369',
+        adminEmail: 'luis.matute@me.com',
         database: {
             client: 'pg',
             connection: {
