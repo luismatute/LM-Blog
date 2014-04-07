@@ -9,7 +9,7 @@ config = {
     // ### Development **(default)**
     development: {
         // The url to use when providing links to the site, E.g. in RSS and email.
-        url: 'http://ghost.luismatute.me/',
+        url: 'http://www.luismatute.me/',
         adminEmail: 'luis.matute@me.com',
         mail: {
             transport: 'SMTP',
@@ -44,7 +44,7 @@ config = {
     // When running Ghost in the wild, use the production environment
     // Configure your URL and mail settings here
     production: {
-        url: 'http://ghost.luismatute.me/',
+        url: 'http://www.luismatute.me/',
         adminEmail: 'luis.matute@me.com',
         mail: {
             transport: 'SMTP',
