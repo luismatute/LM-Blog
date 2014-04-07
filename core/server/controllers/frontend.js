@@ -364,6 +364,9 @@ frontendControllers = {
         deploy.on('close', function (code) {
             console.log('child process exited with code ' + code);
         });
+    },
+    'about': function (req, res, next) {
+        res.sendfile(config().paths.contentPath+'/static/about.html');
     }
 };
 

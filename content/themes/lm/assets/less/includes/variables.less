@@ -1,0 +1,119 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+// Global values
+// --------------------------------------------------
+
+// Images location
+// -------------------------
+	@images-path: 				"/assets/img";
+
+// Grays
+// -------------------------
+	@black: 					#141414;
+	@black-border:				#1e1e1e;
+	@black-light: 				#282828;
+	@black-light-border:		#3b3b3b;
+	@gray-dark:                	#878787;
+	@gray:                  	#333333;
+	@gray-light:             	#9b9b9b;
+	@gray-lighter: 				#e5e5e5;
+
+// Accent colors
+// -------------------------
+	@blue:                  	#4ca5d0;
+	@blue-light:              	#327ea3;
+	@green:                 	#6ca338;
+	@red:                   	#e82c0c;
+	@red-dark: 					#bc3a3a;
+	@yellow:                	#FFBC35;
+	@orange: 					#e67e22;
+
+
+// Scaffolding
+// -------------------------
+	@body-bg:        			@black;
+	@text-color:             	@gray-dark;
+
+
+// Links
+// -------------------------
+	@link-color:            	@blue;
+	@link-hover-color:      	white;
+
+
+// Typography
+// -------------------------
+	@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+	@font-family-lato: 	 	  "latoregular", Helvetica, Arial, sans-serif;
+	@font-family-latobold: 	  "latobold", Helvetica, Arial, sans-serif;
+	@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+	@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+	@font-family-icons:   	  'lm', Arial;
+	@font-family-base:        @font-family-lato;
+
+	@font-size-base:          14px;
+	@font-size-large:         ceil( (@font-size-base * 1.25) ); // ~18px
+	@font-size-small:         ceil( (@font-size-base * 0.85) ); // ~12px
+
+	@line-height-base:        1.428571429; // 20/14
+	@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+
+	@headings-font-family:    @font-family-base;
+	@headings-font-weight:    500;
+	@headings-line-height:    1.1;
+
+	@headings-size-base:      30px;
+	@headings-size-large:     ceil( (@font-size-base * 1.25) ); // ~37px
+	@headings-size-small:     ceil( (@font-size-base * 0.85) ); // ~25px
+
+
+// Component sizing
+// -------------------------
+// Based on 14px font-size and 1.428 line-height (~20px to start)
+
+	@padding-base-vertical:          6px;
+	@padding-base-horizontal:        12px;
+
+	@padding-large-vertical:         10px;
+	@padding-large-horizontal:       16px;
+
+	@padding-small-vertical:         5px;
+	@padding-small-horizontal:       10px;
+
+	@line-height-large:              1.33;
+	@line-height-small:              1.5;
+
+	@border-radius-base:             4px;
+	@border-radius-large:            6px;
+	@border-radius-small:            3px;
+
+	@caret-width-base:               4px;
+	@caret-width-large:              5px;
+
+// Container sizes
+// --------------------------------------------------
+	// X-Small Screen / BBs
+	@container-xsphones:		310px;
+
+	// Small screen / phones
+	@container-phones: 			400px;
+
+	// Medium screen / tablet
+	@container-tablet:          630px;
+
+	// Large screen / desktop
+	@container-desktop:         820px;
+
+	// Hr border color
+	@hr-border:                	@gray-lighter;
+
+// Grid system
+// --------------------------------------------------
+
+	// Padding, to be divided by two and applied to the left and right of all columns
+	@grid-gutter-width:         30px;
+	// Point at which the navbar stops collapsing
+	@grid-float-breakpoint:     @container-tablet;

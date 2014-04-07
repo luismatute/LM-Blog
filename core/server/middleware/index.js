@@ -253,7 +253,7 @@ module.exports = function (server, dbHash) {
     }
 
     // Favicon
-    expressServer.use(subdir, express.favicon(corePath + '/shared/favicon.ico'));
+    expressServer.use(subdir, express.favicon(corePath + '/assets/img/favicon.png'));
 
     // Static assets
     expressServer.use(subdir + '/shared', express['static'](path.join(corePath, '/shared'), {maxAge: ONE_HOUR_MS}));

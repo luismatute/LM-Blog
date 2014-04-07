@@ -16,11 +16,8 @@ module.exports = function (server) {
         res.redirect(301, subdir + '/rss/');
     });
 
-    // Route: github
-    // Path: /github/
-    // Method: POST
-    server.post('/github', frontend.github);
-
+    server.post('/github/', frontend.github);
+    server.get('/about/', frontend.about)
 
     server.get('/tag/:slug/rss/', frontend.rss);
     server.get('/tag/:slug/rss/:page/', frontend.rss);

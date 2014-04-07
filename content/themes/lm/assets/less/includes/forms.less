@@ -1,0 +1,45 @@
+//
+// Forms
+// --------------------------------------------------
+
+	input:not([type="submit"]),textarea {
+		.transition(~"all 0.3s");
+		background: #1e1e1e;
+		border: 2px solid #3b3b3b;
+		color: #fff;
+		line-height: 20px;
+		font-size: 14px;
+		padding: 7px 10px 8px;
+		border-radius: 2px;
+		width: 100%;
+		resize: none;
+		outline: none;
+	}
+	label {
+		font: 12px/15px @font-family-latobold;
+		color: #878787;
+		sup {
+			color: @red-dark;
+			font-size: 18px;
+			line-height: 22px;
+			top: 2px;
+		}
+	}
+	button, input[type="submit"] {
+		.transition(~"all 0.2s");
+		background: transparent;
+		border-radius: 2px;
+		height: 34px;
+		padding: 5px 10px;
+		border: 2px solid @black-light-border;
+		color: #878787;
+		display: block;
+		cursor: pointer;
+		text-align: center;
+		outline: none;
+		&:hover { background: @black-light-border; }
+	}
+
+	input.error, textarea.error {
+		border-color: @red-dark;
+	}
