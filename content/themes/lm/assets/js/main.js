@@ -16,7 +16,7 @@ function tabs() {
 
 		// Loading gmaps only when the user clicks the contact tab
 		if( $section.attr('id') == "contact" && $('.googlemaps').children().length == 0 ) {
-			googlemap_init($("#gmap .googlemaps").get(0), "San Pedro Sula, Cortes, Honduras");
+			googlemap_init($("#gmap .googlemaps").get(0), "Altia Business Park, San Pedro Sula, Cortés, Honduras");
 		}
 	});
 }
@@ -94,7 +94,7 @@ function tabs() {
 			} else
 				alert("Geocode was not successful for the following reason: " + status);
 		});
-		
+
 		jQuery(window).resize(function() {
 			if (googlemap_init_obj.map) googlemap_init_obj.map.setCenter(googlemap_init_obj.address_position);
 		});
@@ -118,7 +118,7 @@ function tabs() {
 	}
 
 	function googlemap_refresh() {
-		googlemap_create();	
+		googlemap_create();
 	}
 
 // Isotope plugin setup
