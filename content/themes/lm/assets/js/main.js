@@ -51,7 +51,11 @@ function tabs() {
 					data: $('#contact-form').serialize(),
 					dataType: 'json',
 					success: function (response) {
-					        console.log(response);
+						// TODO: Sent successfully message
+						$('#contact-name').val('');
+						$('#contact-email').val('');
+						$('#contact-message').val('');
+					    console.log(response);
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
 						console.log(jqXHR);

@@ -391,9 +391,9 @@ frontendControllers = {
                     "This error was generated on the doContact method in the frontend controller."
                 );
             });
-            res.json(200, {message: 'Email was sent!'});
+            res.json(200, {message: 'Email was sent!', error: 0});
         } else {
-            res.json(500, {message: 'There was an error'});
+            res.json(500, {message: 'There was an error', error: 1});
         }
     }
 };
