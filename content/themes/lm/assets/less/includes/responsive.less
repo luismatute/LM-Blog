@@ -149,7 +149,10 @@
             header.active span.icon { width: 100%; left: 0; cursor: default; }
             header.active .divider { .opacity(0); }
             header .section-name { display: block; }
+            header.active .author { margin: 20px 5px 0; }
+            header.active .tags { margin-bottom: 0px; }
         }
+        main.content .section-name.post-name { display: block; }
         #blog-search input { width: 70%; }
         dd.readMore a { width: 100%; text-align: center; font-size: 15px; }
         #right-column { padding: 15px 0 25px; }
@@ -164,6 +167,7 @@
             .text { font-size: 14px; margin: 10px 0; }
         }
     }
+
 // Smartphones (landscape)
 //---------------------------
     @media only screen
@@ -184,17 +188,27 @@
             }
         }
         //  post
-        .post-content { padding: 30px 15px 50px; }
+        // .post-content { padding: 30px 15px 50px; }
         #svComments { padding: 0 15px; }
     }
+
 // Smartphones (portrait)
 //---------------------------
     @media only screen
     and (max-width : 430px) {
         header .divider { display: none; }
-        header span.icon { color: transparent!important; left: 0!important; opacity: 0; }
-        header.active span.icon { opacity: 1; width: 170px!important; }
+        article.post header span.icon { opacity: 1; color: transparent; }
         section.section .section-body { padding: 25px 20px 50px; }
+        article.post header { padding-top: 50px; }
+        main.content .section-name.post-name{
+            text-align: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 60px;
+        }
 
         #blog {
             header.active span.icon { opacity: 1; width: 100%!important; }

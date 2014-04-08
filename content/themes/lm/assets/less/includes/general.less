@@ -164,7 +164,7 @@
 
 // Section
 // -------------------------
-	section.section {
+	section.section, main.content {
 		position: relative;
 		.chevron-down {
 			.transition(~"all 0.2s");
@@ -275,8 +275,10 @@
 			&.post-name {
 				display: inline-block;
 				max-width: 180px;
-				width: 180px;
-				padding-left: 50px;
+				width: 140px;
+				padding-left: 20px;
+				margin-right: 20px;
+				text-transform: uppercase;
 			}
 		}
 		.user {
@@ -342,6 +344,7 @@
 		position: relative;
 		padding:0 30px 30px;
 		border-top: 1px solid @black-light-border;
+		h1 { color: white; line-height: 1.25; }
 		header {
 			padding-bottom: 24px;
 			> a {
@@ -364,7 +367,7 @@
 				font-size: 28px;
 				line-height: 28px;
 				cursor: pointer;
-				// border-right: 1px solid rgba(255, 255, 255, 0.25);
+				&.no-hover { cursor: default; }
 			}
 			.divider {
 				.transition(~"all 0.5s");
@@ -397,6 +400,8 @@
 				line-height: 24px;
 				text-decoration: none;
 				margin: 17px 5px;
+				position: relative;
+				padding-left: 35px;
 				a {
 					color: #646464;
 					&:hover { color: #878787; }
@@ -410,7 +415,10 @@
 					text-align: center;
 					font-size: 14px;
 					line-height: 26px;
+					position: absolute;
+					left: 0;
 				}
+				&.tags a { margin-right: 5px; }
 			}
 		}
 	}
@@ -423,12 +431,13 @@
 		margin-top: 3px;
 	}
 	.pagination {
-		padding:0 30px 30px;
+		padding: 30px;
 		border-top: 1px solid @black-light-border;
 		ul {
 			padding: 0;
 			li { display: inline-block; }
 		}
+		p { margin: 0; }
 	}
 
 // Skills and Resume
@@ -727,78 +736,6 @@
 		}
 	}
 
-// Blog Comments
-// -------------------------
-	#svComments {
-		padding: 0 30px;
-		fieldset { border: 0; }
-	}
-	.comment-container {
-		padding-bottom: 20px;
-		.gravatar {
-			float: left;
-			width: 48px;
-			margin: 0px 15px 0 0;
-			border: 3px solid @black-light-border;
-			border-radius: 3px;
-			img {
-				vertical-align: top;
-				width: 100%;
-				height: auto;
-			}
-		}
-		.text-container {
-			position: relative;
-			float: left;
-			width: 445px;
-		}
-		.reply {
-			position: absolute;
-			top: 0;
-			right: 0;
-			border-width: 2px;
-		}
-		h5 {
-			color: white;
-			font: @font-size-base/17px @font-family-latobold;
-			color: white;
-			margin: 0 0 5px;
-		}
-		.time {
-			font-size: 11px;
-			line-height: 14px;
-			color: #646464;
-			margin: 0;
-			i { font-size: 14px; margin: 1px 3px 0 0; }
-		}
-		.text {
-			color: #646464;
-			font-size: 12px;
-			line-height: 18px;
-			p:first-child { margin-top: 5px; }
-		}
-	}
-
-	.post-content {
-		padding: 30px 30px 50px;
-		h2 {
-			margin-top: 0;
-			font: 24px/29px @font-family-latobold;
-			color: white;
-		}
-		.tags {
-			padding-top: 20px;
-			ul { padding-left: 5px; margin: 0; }
-			h5 {
-				font: @font-size-small/15px @font-family-latobold;
-				letter-spacing: 1px;
-				color: white;
-				margin: 0 7px 0 0;
-				padding-top: 8px;
-			}
-		}
-	}
-
 // Blog Search
 // -------------------------
 	// #svFolder article { padding: 0; }
@@ -820,6 +757,17 @@
 	footer {
 		padding: 20px 0 30px;
 		text-align: right;
+		font: 12px/14px @font-family-latobold;
+		color: @gray-light;
+		a { color: @gray-lighter; }
+		a:hover { color: #878787; }
+	}
+	.share {
+		a {
+			font-size: 18px;
+			margin: 0 11px;
+			&:last-child { margin-right: 0; }
+		}
 	}
 
 // Colors

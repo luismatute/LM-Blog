@@ -16,8 +16,8 @@
     <link rel="shortcut icon" href="{{asset "img/favicon.png"}}">
 
     {{! Styles'n'Scripts }}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/master.css"}}" />
+    {{!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" /> --}}
     <link rel="stylesheet" type="text/css" href="{{asset "css/prism.css"}}" />
 
     {{! Ghost outputs important style and meta data with this tag }}
@@ -25,14 +25,38 @@
 </head>
 <body class="{{body_class}}">
 
-    {{! Everything else gets inserted here }}
-    {{{body}}}
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <footer class="site-footer">
-        <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
+    {{!-- Colored Bar at the top --}}
+            <ul class="colored clearfix">
+                <li class="bg-blue-light"></li>
+                <li class="bg-blue"></li>
+                <li class="bg-green"></li>
+                <li class="bg-yellow"></li>
+                <li class="bg-red"></li>
+            </ul>
+
+    {{!-- Social Media --}}
+        <div class="container clearfix">
+            <ul id="social-media" class="clearfix">
+                <li><a href="//www.facebook.com/lmatute10" class="icon" target="_blank">&#xe61b;</a></li>
+                <li><a href="//twitter.com/luis_matute" class="icon" target="_blank">&#xe61a;</a></li>
+                <li><a href="//www.linkedin.com/pub/luis-matute/50/458/82b/" class="icon" target="_blank">&#xe624;</a></li>
+                <li><a href="//github.com/luismatute/" class="icon" target="_blank">&#xe632;</a></li>
+                <li><a href="{{@blog.url}}/rss/" class="icon" target="_blank">&#xe64b;</a></li>
+            </ul>
+        </div>
+
+    <div class="main container clearfix">
+        {{! Everything else gets inserted here }}
+        {{{body}}}
+    </div>{{!-- /.main --}}
+
+    <footer class="site-footer container">
         <div class="inner">
-             <section class="copyright">All content copyright <a href="{{@blog.url}}/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-             <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+             <section class="poweredby">Proudly published with <a href="https://ghost.org" target="_blank">Ghost</a></section>
         </div>
     </footer>
 
