@@ -1,6 +1,6 @@
 /*
 // Common JS
-// Date: December 2013
+// Date: April 2014
 // Luis Matute - luis.matute@me.com
 // Description:
 //	Code here is available site wide
@@ -72,6 +72,7 @@
 					data: $('#contact-form').serialize(),
 					dataType: 'json',
 					success: function (response) {
+						console.log(response.error);
 						// TODO: Sent successfully message
 						$('#contact-name').val('');
 						$('#contact-email').val('');
