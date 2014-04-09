@@ -210,7 +210,7 @@ function robots() {
                     if (err) {
                         return next(err);
                     }
-                    
+
                     content = {
                         headers: {
                             'Content-Type': 'text/plain',
@@ -253,7 +253,7 @@ module.exports = function (server, dbHash) {
     }
 
     // Favicon
-    expressServer.use(subdir, express.favicon(corePath + '/assets/img/favicon.png'));
+    expressServer.use(subdir, express.favicon(corePath + '/shared/img/favicon.png'));
 
     // Static assets
     expressServer.use(subdir + '/shared', express['static'](path.join(corePath, '/shared'), {maxAge: ONE_HOUR_MS}));

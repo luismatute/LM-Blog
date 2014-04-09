@@ -1,25 +1,46 @@
-
-//
-// Main JS
-// Date: Dec 2013
-// Developers:
-// Luis Matute      - luis.matute@me.com
+/*
+// Common JS
+// Date: December 2013
+// Luis Matute - luis.matute@me.com
+// Description:
+//	Code here is available site wide
+// 	Note: jQuery is available, so we dont need to
+//	declare it as a dependency
 // --------------------------------------------------
+*/
 
-
-function tabs() {
-	$('.tab').on('click', function(event){
-		event.preventDefault();
-		var $section = $(this).closest('.section');
-		$section.children('header').toggleClass('active'); // Tabs animation
-		$section.children('.section-body').finish().slideToggle();
-
-		// Loading gmaps only when the user clicks the contact tab
-		if( $section.attr('id') == "contact" && $('.googlemaps').children().length == 0 ) {
-			googlemap_init($("#gmap .googlemaps").get(0), "Altia Business Park, San Pedro Sula, Cortés, Honduras");
-		}
+// This is the definition of the module
+	define('common', function(){
+		$(function () {
+			_.legacy();
+	        _.gaSetup('UA-40189119-1');
+	        bind_events();
+	        tabs();
+			formValidator();
+			isotope();
+			console.log("[Ghost-"+app.env.toUpperCase()+"]: Initiated");
+		});
 	});
-}
+
+// General event binding
+	function bind_events() {
+		Prism.highlightAll()
+	}
+
+// Tabs Functionallity
+	function tabs() {
+		$('.tab').on('click', function(event){
+			event.preventDefault();
+			var $section = $(this).closest('.section');
+			$section.children('header').toggleClass('active'); // Tabs animation
+			$section.children('.section-body').finish().slideToggle();
+
+			// Loading gmaps only when the user clicks the contact tab
+			if( $section.attr('id') == "contact" && $('.googlemaps').children().length == 0 ) {
+				googlemap_init($("#gmap .googlemaps").get(0), "Altia Business Park, San Pedro Sula, Cortés, Honduras");
+			}
+		});
+	}
 
 // Generic Form Validation
 	function formValidator() {
@@ -144,21 +165,3 @@ function tabs() {
 
 		$container.isotope({ filter: '*' });
 	}
-// Google Analytics setup
-	function gaSetup ( account_id ) {
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-40189119-1', 'luismatute.me');
-		ga('send', 'pageview');
-    }
-
-// Document Ready
-	$(document).ready(function(){
-		tabs();
-		formValidator();
-		isotope();
-		gaSetup();
-	});

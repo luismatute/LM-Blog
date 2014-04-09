@@ -460,11 +460,18 @@ coreHelpers.ghost_head = function (options) {
 
 coreHelpers.ghost_foot = function (options) {
     /*jshint unused:false*/
-    var foot = [];
+    var foot        = [],
+        require_tpl = _.template('<script src="<%= source %>?v=<%= version %>" data-main="<%= main %>"></script>'),
+        script_tpl  = _.template('<script><%= script %></script>'),
+        env         = (process.env.NODE_ENV == 'development')? 'dev': 'min';
 
-    foot.push(scriptTemplate({
-        source: config().paths.subdir + '/public/jquery.js',
-        version: coreHelpers.assetHash
+    foot.push(require_tpl({
+        source: '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js',
+        version: coreHelpers.assetHash,
+        main: '/assets/js/'+env+'/app'
+    }));
+    foot.push(script_tpl({
+        script: 'window.app = {env:"'+ env +'",bust:"'+ coreHelpers.assetHash +'",assets_url:"/assets/js/'+env+'/"}'
     }));
 
     return filters.doFilter('ghost_foot', foot).then(function (foot) {
