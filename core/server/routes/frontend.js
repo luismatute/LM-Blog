@@ -15,12 +15,6 @@ module.exports = function (server) {
         res.set({'Cache-Control': 'public, max-age=' + ONE_YEAR_S});
         res.redirect(301, subdir + '/rss/');
     });
-
-    // Custom Routes
-    server.post('/github/', frontend.github);
-    server.get('/about/', frontend.about);
-    server.post('/about/contact/', frontend.doContact);
-
     server.get('/tag/:slug/rss/', frontend.rss);
     server.get('/tag/:slug/rss/:page/', frontend.rss);
     server.get('/tag/:slug/page/:page/', frontend.tag);
@@ -28,6 +22,4 @@ module.exports = function (server) {
     server.get('/page/:page/', frontend.homepage);
     server.get('/', frontend.homepage);
     server.get('*', frontend.single);
-
-
 };

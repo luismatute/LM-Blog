@@ -31,7 +31,7 @@ require.config({
 		util: 		['jquery'],
 		isotope: 	['jquery'],
 		fitvids: 	['jquery'],
-		common: 	['jquery', 'prism', 'util', 'isotope', 'fitvids'],
+		common: 	['prism', 'jquery', 'util', 'isotope', 'fitvids'],
 		prism: {
 	      	"exports": "Prism"
 	    }

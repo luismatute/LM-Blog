@@ -235,6 +235,9 @@ function init(server) {
 
         // ## Routing
 
+        // Set up Frontend routes
+        routes.custom(server);
+
         // Set up API routes
         routes.api(server);
 
