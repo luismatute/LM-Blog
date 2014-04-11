@@ -16,6 +16,7 @@ customControllers = {
         deploy.on('close', function (code) {
             console.log('Child process exited with code ' + code);
         });
+        res.json(200, {message: 'Github Hook received!'})
     },
     'about': function (req, res, next) {
         res.sendfile(config().paths.contentPath+'/static/about.html');
