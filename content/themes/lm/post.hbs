@@ -7,18 +7,18 @@
     {{!-- Profile --}}
         <section id="profile" class="section">
             <div class="section-info clearfix">
-                <div class="user pull-left">
-                    <a href="/" class="profile-pic inline-block small">
+                <div class="user pull-left" itemscope itemtype="http://data-vocabulary.org/Person">
+                    <a href="/" itemprop="url" class="profile-pic inline-block small">
                         <img src="{{@blog.logo}}" alt="{{@blog.title}}">
                     </a>
-                    <h1 class="inline-block">{{@blog.title}} <span class="blue">Web Dev</span></h1>
+                    <h1 class="inline-block"><span itemprop="name" id="name">Luis Matute</span> <span class="blue">Web Dev</span></h1>
                 </div>
             </div>
         </section>
 
-<main class="content" role="main">
+<main class="content" role="main" itemscope itemtype="http://schema.org/Blog">
     {{user}}
-    <article class="{{post_class}}">
+    <article class="{{post_class}}" itemscope itemtype="http://schema.org/BlogPosting">
 
         {{! Everything inside the #post tags pulls data from the post }}
         {{#post}}
@@ -28,7 +28,7 @@
                     <div class="show">
                         <span class="icon no-hover bg-blue-light">&#xe60b;</span>
                         <div class="divider"></div>
-                        <span class="section-name post-name inline-block"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMM.DD"}}</time></span>
+                        <span class="section-name post-name inline-block"><time itemprop="dateCreated" datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMM.DD"}}</time></span>
 
                         <p class="inline-block header-item author">
                             <i class="icon inline-block header-icon">&#xe609;</i>
