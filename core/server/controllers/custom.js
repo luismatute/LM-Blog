@@ -20,9 +20,12 @@ customControllers = {
         });
         res.json(200, {message: 'Github Hook received!'})
     },
+    // This is my profile page
+    // TODO: make this page load with ghost vars and handlebars
     'about': function (req, res, next) {
         res.sendfile(config().paths.contentPath+'/static/about.html');
     },
+    // Handles the contact fucntionality
     'doContact': function (req, res, next) {
         var message = {
             to: config().adminEmail,
