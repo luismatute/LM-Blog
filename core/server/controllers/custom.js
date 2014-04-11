@@ -8,6 +8,7 @@ var mailer      = require('../mail'),
 	customControllers;
 
 customControllers = {
+    // This will take of the post sent from github when a push was made to the master
 	'github': function (req, res, next) {
         var spawn = require('child_process').spawn,
             deploy = spawn('sh', [ config().paths.corePath+'/github/deploy.sh' ]);
