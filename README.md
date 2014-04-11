@@ -1,1 +1,1 @@
-# Luis Matute - Blog
+# Luis Matute - Ghost Blog
