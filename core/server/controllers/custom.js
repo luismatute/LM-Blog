@@ -14,7 +14,7 @@ customControllers = {
 
         console.log(req.body)
         deploy.on('close', function (code) {
-            console.log('child process exited with code ' + code);
+            console.log('Child process exited with code ' + code);
         });
     },
     'about': function (req, res, next) {
