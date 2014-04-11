@@ -13,8 +13,7 @@ customControllers = {
         var spawn = require('child_process').spawn,
             deploy = spawn('sh', [ config().paths.corePath+'/github/deploy.sh' ]);
 
-        console.log(req.body)
-        console.log(req.body.payload)
+        console.log(req.body.payload.head_commit.message)
         deploy.on('close', function (code) {
             console.log('Child process exited with code ' + code);
         });
