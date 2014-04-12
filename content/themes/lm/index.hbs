@@ -7,11 +7,11 @@
     {{!-- Profile --}}
         <section id="profile" class="section">
             <div class="section-info clearfix">
-                <div class="user pull-left" itemscope itemtype="http://data-vocabulary.org/Person">
+                <div class="user pull-left" itemscope itemtype="http://schema.org/Person">
                     <a href="/about" itemprop="url" class="profile-pic inline-block small">
-                        <img src="{{@blog.logo}}" alt="Luis Matute">
+                        <img src="{{@blog.logo}}" itemprop="image" alt="Luis Matute">
                     </a>
-                    <h1 class="inline-block"><span itemprop="name" id="name">Luis Matute</span> <span class="blue">Web Dev</span></h1>
+                    <h1 class="inline-block"><span itemprop="name" id="name">Luis Matute</span> <span class="blue" itemprop="jobTitle">Web Dev</span></h1>
                 </div>
             </div>
         </section>
@@ -21,7 +21,7 @@
 
     {{! Each post will be output using this markup }}
     {{#foreach posts}}
-        <article class="{{post_class}} clearfix post" itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="{{post_class}} clearfix post" itemprop="blogPosts" itemscope itemtype="http://schema.org/Article">
             {{!-- Post Header --}}
                 <header class="active post-header">
                     <div class="show">
@@ -31,13 +31,13 @@
 
                         <p class="inline-block header-item author">
                             <i class="icon inline-block header-icon">&#xe609;</i>
-                            <a href="/about" class="inline-block">{{author.name}}</a>
+                            <a href="/" class="inline-block" itemprop="author">{{author.name}}</a>
                         </p>
 
                         <p class="inline-block header-item tags">
                             <i class="inline-block icon">&#xe640;</i>
                             {{#each tags}}
-                                <a href="/tag/{{slug}}" class="inline-block">{{name}}</a>
+                                <a href="/tag/{{slug}}" class="inline-block" itemprop="keywords">{{name}}</a>
                             {{/each}}
                         </p>
                     </div>
@@ -45,11 +45,11 @@
 
             {{!-- Post Title --}}
                 <dt class="title">
-                    <a href="{{url}}">{{{title}}}</a>
+                    <a href="{{url}}" itemprop="name">{{{title}}}</a>
                 </dt>
 
             {{!-- Post Body --}}
-                <dd class="summary">
+                <dd class="summary" itemprop="description">
                     <p>{{excerpt words="100"}}&hellip;</p>
                 </dd>
                 <dd class="readMore">
