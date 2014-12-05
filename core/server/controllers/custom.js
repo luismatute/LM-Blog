@@ -22,13 +22,13 @@ customControllers = {
     // This is my profile page
     // TODO: make this page load with ghost vars and handlebars
     'about': function (req, res, next) {
-        res.sendFile(config.paths.contentPath+'static/about.html', function (err) {
+        res.sendFile(config.paths.contentPath+'/static/about.html', function (err) {
             if (err) {
                 console.log(err);
                 res.status(err.status).end();
             }
         });
-        // res.sendfile(config.paths.contentPath+'static/about.html');
+        // res.sendfile(config.paths.contentPath+'/static/about.html');
     },
     // Handles the contact fucntionality
     'doContact': function (req, res, next) {
