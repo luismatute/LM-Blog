@@ -47,6 +47,9 @@
             <h1 class="post-title">{{{title}}}</h1>
 
             <section class="post-content" itemprop="articleBody">
+                {{#if image}}
+                    <img src="{{image}}" alt="{{title}}">
+                {{/if}}
                 {{content}}
             </section>
 
