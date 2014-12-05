@@ -2,11 +2,15 @@
  * Custom Routes for Ghost Frontend
  */
 
-var custom 	= require('../controllers/custom');
+var custom 	= require('../controllers/custom'),
+	express = require('express');
 
-module.exports = function (server) {
+module.exports = function () {
+	var router = express.Router();
 	// ### Custom routes
-    server.post('/github/', custom.github);
-    server.get('/about/', custom.about);
-    server.post('/about/contact/', custom.doContact);
+    router.post('/github/', custom.github);
+    router.get('/about/', custom.about);
+    router.post('/about/contact/', custom.doContact);
+
+   	return router;
 };

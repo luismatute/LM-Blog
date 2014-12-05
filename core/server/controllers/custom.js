@@ -3,7 +3,7 @@
  */
 
 var mailer      = require('../mail'),
-	errors      = require('../errorHandling'),
+	errors      = require('../errors'),
 	config      = require('../config'),
 	customControllers;
 
@@ -11,7 +11,7 @@ customControllers = {
     // This will take of the post sent from github when a push was made to the master
 	'github': function (req, res, next) {
         var spawn = require('child_process').spawn,
-            deploy = spawn('sh', [ config().paths.corePath+'/github/deploy.sh' ]);
+            deploy = spawn('sh', [ config.paths.corePath+'/github/deploy.sh' ]);
 
         console.log(req.body.payload.head_commit.message)
         deploy.on('close', function (code) {
@@ -22,12 +22,18 @@ customControllers = {
     // This is my profile page
     // TODO: make this page load with ghost vars and handlebars
     'about': function (req, res, next) {
-        res.sendfile(config().paths.contentPath+'/static/about.html');
+        res.sendFile(config.paths.contentPath+'static/about.html', function (err) {
+            if (err) {
+                console.log(err);
+                res.status(err.status).end();
+            }
+        });
+        // res.sendfile(config.paths.contentPath+'static/about.html');
     },
     // Handles the contact fucntionality
     'doContact': function (req, res, next) {
         var message = {
-            to: config().adminEmail,
+            to: config.adminEmail,
             subject: 'New Contact',
             html: ''
         };

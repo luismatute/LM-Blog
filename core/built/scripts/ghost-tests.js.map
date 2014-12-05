@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "ghost-tests.js",
+  "sources": [
+    ".tmp/ember-tests-transpiled/test-helper.js",
+    ".tmp/ember-tests-transpiled/unit/components/gh-trim-focus-input_test.js"
+  ],
+  "names": [],
+  "mappings": "AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K;ACtBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,K",
+  "sourcesContent": [
+    "define(\"ghost/tests/test-helper\", \n  [\"ember-cli/test-loader\",\"ember/resolver\",\"ember-mocha\"],\n  function(__dependency1__, __dependency2__, __dependency3__) {\n    \"use strict\";\n    var TestLoader = __dependency1__[\"default\"];\n    var Resolver = __dependency2__[\"default\"];\n    var setResolver = __dependency3__.setResolver;\n\n    var resolver = Resolver.create();\n    resolver.namespace = {\n      modulePrefix: 'ghost'\n    };\n\n    setResolver(resolver);\n\n    TestLoader.load();\n\n    window.expect = chai.expect;\n\n    mocha.checkLeaks();\n    mocha.globals(['jQuery', 'EmberInspector']);\n    mocha.run();\n  });",
+    "define(\"ghost/tests/unit/components/gh-trim-focus-input_test\", \n  [\"ember-mocha\"],\n  function(__dependency1__) {\n    \"use strict\";\n    /* jshint expr:true */\n    var describeComponent = __dependency1__.describeComponent;\n    var it = __dependency1__.it;\n\n    describeComponent('gh-trim-focus-input', function () {\n        it('trims value on focusOut', function () {\n            var component = this.subject({\n                value: 'some random stuff   '\n            });\n\n            this.render();\n\n            component.$().focusout();\n            expect(component.$().val()).to.equal('some random stuff');\n        });\n    });\n  });"
+  ]
+}
