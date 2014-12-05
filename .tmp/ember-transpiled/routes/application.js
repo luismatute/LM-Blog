@@ -1,0 +1,167 @@
+define("ghost/routes/application", 
+  ["ghost/mixins/shortcuts-route","exports"],
+  function(__dependency1__, __exports__) {
+    "use strict";
+    /* global key */
+    var ShortcutsRoute = __dependency1__["default"];
+
+    var ApplicationRoute = Ember.Route.extend(SimpleAuth.ApplicationRouteMixin, ShortcutsRoute, {
+
+        afterModel: function (model, transition) {
+            if (this.get('session').isAuthenticated) {
+                transition.send('loadServerNotifications');
+            }
+        },
+
+        shortcuts: {
+            esc: {action: 'closePopups', scope: 'all'},
+            enter: {action: 'confirmModal', scope: 'modal'}
+        },
+
+        title: function (tokens) {
+            return tokens.join(' - ') + ' - ' + this.get('config.blogTitle');
+        },
+
+        actions: {
+            authorizationFailed: function () {
+                var currentRoute = this.get('controller').get('currentRouteName'),
+                    editorController;
+
+                if (currentRoute.split('.')[0] === 'editor') {
+                    editorController = this.controllerFor(currentRoute);
+
+                    if (editorController.get('isDirty')) {
+                        this.send('openModal', 'auth-failed-unsaved', editorController);
+                        return;
+                    }
+                }
+
+                this._super();
+            },
+
+            toggleGlobalMobileNav: function () {
+                this.toggleProperty('controller.showGlobalMobileNav');
+            },
+
+            openSettingsMenu: function () {
+                this.set('controller.showSettingsMenu', true);
+            },
+            closeSettingsMenu: function () {
+                this.set('controller.showSettingsMenu', false);
+            },
+            toggleSettingsMenu: function () {
+                this.toggleProperty('controller.showSettingsMenu');
+            },
+
+            closePopups: function () {
+                this.get('dropdown').closeDropdowns();
+                this.get('notifications').closeAll();
+
+                // Close right outlet if open
+                this.send('closeSettingsMenu');
+
+                this.send('closeModal');
+            },
+
+            signedIn: function () {
+                this.send('loadServerNotifications', true);
+            },
+
+            sessionAuthenticationFailed: function (error) {
+                if (error.errors) {
+                    this.notifications.showErrors(error.errors);
+                } else {
+                    // connection errors don't return proper status message, only req.body
+                    this.notifications.showError('There was a problem on the server.');
+                }
+            },
+
+            sessionAuthenticationSucceeded: function () {
+                var self = this;
+                this.store.find('user', 'me').then(function (user) {
+                    self.send('signedIn', user);
+                    var attemptedTransition = self.get('session').get('attemptedTransition');
+                    if (attemptedTransition) {
+                        attemptedTransition.retry();
+                        self.get('session').set('attemptedTransition', null);
+                    } else {
+                        self.transitionTo(SimpleAuth.Configuration.routeAfterAuthentication);
+                    }
+                });
+            },
+
+            sessionInvalidationFailed: function (error) {
+                this.notifications.showError(error.message);
+            },
+
+            openModal: function (modalName, model, type) {
+                this.get('dropdown').closeDropdowns();
+                key.setScope('modal');
+                modalName = 'modals/' + modalName;
+                this.set('modalName', modalName);
+
+                // We don't always require a modal to have a controller
+                // so we're skipping asserting if one exists
+                if (this.controllerFor(modalName, true)) {
+                    this.controllerFor(modalName).set('model', model);
+
+                    if (type) {
+                        this.controllerFor(modalName).set('imageType', type);
+                        this.controllerFor(modalName).set('src', model.get(type));
+                    }
+                }
+
+                return this.render(modalName, {
+                    into: 'application',
+                    outlet: 'modal'
+                });
+            },
+
+            confirmModal: function () {
+                var modalName = this.get('modalName');
+
+                this.send('closeModal');
+
+                if (this.controllerFor(modalName, true)) {
+                    this.controllerFor(modalName).send('confirmAccept');
+                }
+            },
+
+            closeModal: function () {
+                this.disconnectOutlet({
+                    outlet: 'modal',
+                    parentView: 'application'
+                });
+
+                key.setScope('default');
+            },
+
+            loadServerNotifications: function (isDelayed) {
+                var self = this;
+
+                if (this.session.isAuthenticated) {
+                    this.store.findAll('notification').then(function (serverNotifications) {
+                        serverNotifications.forEach(function (notification) {
+                            self.notifications.handleNotification(notification, isDelayed);
+                        });
+                    });
+                }
+            },
+
+            handleErrors: function (errors) {
+                var self = this;
+
+                this.notifications.clear();
+                errors.forEach(function (errorObj) {
+                    self.notifications.showError(errorObj.message || errorObj);
+
+                    if (errorObj.hasOwnProperty('el')) {
+                        errorObj.el.addClass('input-error');
+                    }
+                });
+            }
+        }
+    });
+
+    __exports__["default"] = ApplicationRoute;
+  });
